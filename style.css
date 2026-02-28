@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: #000000;
+    background-image: url('source/background_01.gif');
+    /* 배경 이미지 경로 설정 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+.app-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#webcam {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    pointer-events: none;
+    transform: scaleX(-1);
+    z-index: 1;
+    filter: blur(8px) contrast(1.2) grayscale(0.5);
+}
+
+#pip-container {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 220px;
+    height: 180px;
+    overflow: hidden;
+    z-index: 10;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    background: #000;
+    display: none;
+    /* 인트로에서 숨김 */
+}
+
+#pip-webcam,
+#pip-canvas {
+    position: absolute;
+    top: 0;
+    left: -100px;
+    width: 320px;
+    height: 180px;
+    object-fit: cover;
+    transform: scaleX(-1);
+    z-index: 1;
+}
+
+#pip-webcam {
+    opacity: 0.9;
+}
+
+#pip-canvas {
+    z-index: 2;
+}
+
+#canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    transform: scaleX(-1);
+}
+
+#ui-layer {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 3rem 4rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    text-align: center;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#ui-layer.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-20px);
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+p {
+    font-weight: 300;
+    color: #bcbcbc;
+    line-height: 1.6;
+}
+
+small {
+    color: #ffffff;
+}
+
+button {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-family: inherit;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(135deg, #8966ea 0%, #5955aa 100%);
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(118, 75, 162, 0.4);
+    transition: all 0.3s ease;
+}
+
+button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(118, 75, 162, 0.6);
+}
+
+button:disabled {
+    background: #333;
+    color: #666;
+    cursor: not-allowed;
+    box-shadow: none;
+}

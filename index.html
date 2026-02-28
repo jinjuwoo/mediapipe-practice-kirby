@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hand Tracking Particles</title>
+    <link rel="stylesheet" href="style.css?v=9">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Video for camera input (background) -->
+        <video id="webcam" autoplay playsinline></video>
+
+        <!-- Small Picture-in-Picture webcam view with landmarks -->
+        <div id="pip-container">
+            <video id="pip-webcam" autoplay playsinline></video>
+            <canvas id="pip-canvas"></canvas>
+        </div>
+
+        <!-- Canvas for particle effects -->
+        <canvas id="canvas"></canvas>
+
+        <!-- Kirby Overlay Image (so gifs animate) -->
+        <img id="kirby-overlay" src="source/kirby_01.png"
+            style="position: absolute; width: 72px; height: 72px; z-index: 15; pointer-events: none; transform: translate(-50%, -50%) scaleX(-1); display: none;">
+
+        <!-- UI overlay -->
+        <div id="ui-layer" class="glass-panel">
+            <img src="source/kirby_02.gif" alt="Kirby" style="width: 50px; height: 50px;">
+            <h1 id="status-text">커비 로딩 중...</h1>
+            <p>카메라를 허용하고 손을 움직여 커비와 날아보세요.<br><small></small></p>
+            <button id="start-btn" disabled>시작하기</button>
+        </div>
+    </div>
+    <script type="module" src="script.js?v=17"></script>
+</body>
+
+</html>
